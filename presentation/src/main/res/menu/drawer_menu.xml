@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_manufactures"
+              android:title="@string/manufacturers"
+              android:icon="@drawable/ic_account_balance_black_24dp"
+        />
+
+        <item android:id="@+id/nav_car_types"
+              android:title="@string/car_types"
+              android:icon="@drawable/car_types"
+        />
+
+        <item android:id="@+id/nav_built_date"
+              android:title="@string/car_types"
+              android:icon="@drawable/car_built_dates"
+        />
+    </group>
+</menu>

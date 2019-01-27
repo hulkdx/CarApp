@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "hulkdx.com.carsearch"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", ''
+        }
+    }
+}
+
+dependencies {
+
+    def dep = rootProject.ext.presentationDependencies
+
+    implementation dep.kotlin
+    implementation dep.appCompat
+    implementation "com.google.android.material:material:1.1.0-alpha02"
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+
+    implementation dep.dagger
+    kapt dep.daggerCompiler
+
+    implementation dep.retrofit
+    implementation dep.retrofitGson
+
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    testImplementation dep.junit
+    testImplementation dep.mockito
+}

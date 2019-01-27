@@ -1,0 +1,141 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Platform.AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    </style>
+
+    <style name="AppTheme" parent="Platform.AppTheme">
+
+        <item name="windowNoTitle">true</item>
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="searchViewStyle">@style/SearchViewStyle</item>
+
+        <!-- see https://github.com/material-components/material-components-android/blob/2997b6995f32bbd7f7a4f24f4030278a50c15e6f/docs/theming/Typography.md -->
+        <item name="textAppearanceHeadline5">@style/TextAppearance.App.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.App.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.App.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.App.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.App.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.App.Body2</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.App.Caption</item>
+    </style>
+
+    <style name="Button.Borderless" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:layout_marginLeft">-6dp</item>
+        <item name="android:layout_marginRight">-6dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:paddingLeft">6dp</item>
+        <item name="android:paddingRight">6dp</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="searchHintIcon">@null</item>
+    </style>
+
+
+    <style name="Widget.App.Toolbar" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="toolbarNavigationButtonStyle">@style/Widget.App.Toolbar.Button.Navigation</item>
+    </style>
+
+    <style name="Widget.App.Toolbar.Button.Navigation" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">40dp</item>
+    </style>
+
+    <!--Text styles -->
+
+    <!-- see https://github.com/material-components/material-components-android/blob/2997b6995f32bbd7f7a4f24f4030278a50c15e6f/docs/theming/Typography.md -->
+
+    <!-- Notosans Regular 24sp -->
+    <style name="TextAppearance.App.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:fontFamily">@font/notosans_regular</item>
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <!-- Notosans Medium 20sp -->
+    <style name="TextAppearance.App.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:fontFamily">@font/notosans_medium</item>
+        <item name="fontFamily">@font/notosans_medium</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <!-- Notosans Regular 16sp -->
+    <style name="TextAppearance.App.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:fontFamily">@font/notosans_regular</item>
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <!-- Notosans Medium 14sp -->
+    <style name="TextAppearance.App.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:fontFamily">@font/notosans_medium</item>
+        <item name="fontFamily">@font/notosans_medium</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <!-- Notosans Regular 16sp -->
+    <style name="TextAppearance.App.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">@font/notosans_regular</item>
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <!-- Notosans Regular 14sp -->
+    <style name="TextAppearance.App.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:fontFamily">@font/notosans_regular</item>
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <!-- Notosans Regular 12sp -->
+    <style name="TextAppearance.App.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:fontFamily">@font/notosans_regular</item>
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <!-- Lekton-Bold 24sp -->
+    <style name="TextAppearance.Lekton.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:fontFamily">@font/lekton</item>
+        <item name="fontFamily">@font/lekton</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <!-- Lekton-Bold 16sp -->
+    <style name="TextAppearance.Lekton.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:fontFamily">@font/lekton</item>
+        <item name="fontFamily">@font/lekton</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <!-- Lekton 16sp -->
+    <style name="TextAppearance.Lekton.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">@font/lekton</item>
+        <item name="fontFamily">@font/lekton</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <!-- Lekton 12sp -->
+    <style name="TextAppearance.Lekton.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:fontFamily">@font/lekton</item>
+        <item name="fontFamily">@font/lekton</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+</resources>

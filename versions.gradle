@@ -1,0 +1,34 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+
+    kotlinVersion = ext.kotlin_version
+    daggerVersion = '2.20'
+    retrofitVersion = '2.3.0'
+
+    mockitoVersion        = '2.7.22'
+
+    def junit = "junit:junit:4.12"
+
+    presentationDependencies = [
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
+
+            dagger:             "com.google.dagger:dagger:${daggerVersion}",
+            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+            daggerSupport:      "com.google.dagger:dagger-android-support:$daggerVersion",
+            daggerAndroid: "com.google.dagger:dagger-android:$daggerVersion",
+            daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:$daggerVersion",
+
+            appCompat:          "androidx.appcompat:appcompat:1.0.0-beta01",
+            retrofit:           "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitGson:       "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            junit:              junit,
+            mockito:            "org.mockito:mockito-core:${mockitoVersion}",
+    ]
+
+
+}
