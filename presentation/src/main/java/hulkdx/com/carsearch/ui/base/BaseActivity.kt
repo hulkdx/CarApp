@@ -75,15 +75,20 @@ abstract class BaseActivity : AppCompatActivity() {
         sActivityId = savedInstanceState?.getInt(ACTIVITY_ID) ?: sActivityId + 1
         var configPersistentComponent: ConfigPersistentComponent? = sComponentsMap.get(sActivityId.toLong(), null)
         if (configPersistentComponent == null) {
-            Timber.i("Creating new component");
+            Timber.i("Creating new component")
             configPersistentComponent = DaggerConfigPersistentComponent.builder()
                 .applicationComponent((application as CarApplication).applicationComponent)
                 .build()
             sComponentsMap.put(sActivityId.toLong(), configPersistentComponent)
         } else {
-            Timber.i("re-using component, activityId: " + sActivityId);
+            Timber.i("re-using component, activityId: $sActivityId")
         }
-        activityComponent = configPersistentComponent!!.activityComponent(ActivityModule(this))
+
+        if (configPersistentComponent == null) {
+            Timber.e("configPersistentComponent == null")
+        }
+
+        activityComponent = configPersistentComponent?.activityComponent(ActivityModule(this))
     }
 
     private fun removeConfigPersistentComponent() {

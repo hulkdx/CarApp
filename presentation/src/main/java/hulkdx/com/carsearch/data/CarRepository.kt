@@ -4,58 +4,43 @@ import hulkdx.com.carsearch.data.models.CarBuiltDate
 import hulkdx.com.carsearch.data.models.CarType
 import hulkdx.com.carsearch.data.models.Manufacturer
 import hulkdx.com.carsearch.data.remote.ApiManager
-import hulkdx.com.carsearch.mapper.CarMapper
-import hulkdx.com.carsearch.utils.getPagination
-import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.collections.ArrayList
 
 /**
  * Created by Mohammad Jafarzadeh Rezvan on 26/01/2019.
  */
 @Singleton
 open class CarRepository @Inject constructor(private val apiManager: ApiManager,
-                                             private val mCarMapper: CarMapper)
+                                             private val mMemoryCache: MemoryCache)
 {
-    @Volatile
-    private var totalManufacturerCount: Int = -1
-
-    // Note: multiple thread access this object so it needs to be synchronized or define as Volatile
-    // Please read CustomThreadExecutor.kt
-    @Volatile
-    private var memoryCachedManufacturers: List<Manufacturer> = Collections.synchronizedList(ArrayList())
-        set(value) {
-            field = Collections.synchronizedList(value)
-        }
 
     open fun getManufacturers(size: Int, page: Int): List<Manufacturer> {
 
-        if (memoryCachedManufacturers.isNotEmpty()) {
-            return memoryCachedManufacturers.getPagination(page, size)
+        mMemoryCache.getManufacturer(page, size)?.let {
+            return it
         }
 
-        val apiResponse = apiManager.getManufacturer(size, page)
+        val (manufacturers, totalManufacturerCount) = apiManager.getManufacturer(size, page)
+        mMemoryCache.totalManufacturerCount = totalManufacturerCount
 
-        totalManufacturerCount = apiResponse.totalPageCount * size
-
-        return mCarMapper.convertToManufacturers(apiResponse)
+        return manufacturers
     }
 
     open fun getAllManufacturers(): List<Manufacturer> {
 
-        if (memoryCachedManufacturers.isNotEmpty()) {
-            return memoryCachedManufacturers
+        mMemoryCache.getAllManufacturers()?.let {
+            return it
         }
 
+        var totalManufacturerCount = mMemoryCache.totalManufacturerCount
         if (totalManufacturerCount == -1) {
-            getManufacturers(1, 0)
+            totalManufacturerCount = apiManager.getManufacturer(1, 0).secondParam
+            mMemoryCache.totalManufacturerCount = totalManufacturerCount
         }
 
         val manufacturers = getManufacturers(totalManufacturerCount, 0)
-
-        memoryCachedManufacturers = manufacturers
-
+        mMemoryCache.manufacturers = manufacturers
         return manufacturers
     }
 

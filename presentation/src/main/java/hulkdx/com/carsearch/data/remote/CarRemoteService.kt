@@ -7,6 +7,7 @@ import hulkdx.com.carsearch.data.models.CarType
 import hulkdx.com.carsearch.data.models.Manufacturer
 import hulkdx.com.carsearch.data.models.remoteresponse.ApiResponse
 import hulkdx.com.carsearch.mapper.CarMapper
+import hulkdx.com.carsearch.utils.TwoParam
 import hulkdx.com.carsearch.utils.WA_KEY
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -46,16 +47,16 @@ open class ApiManager @Inject constructor(private val mCarRemoteService: CarRemo
     }
 
     @Throws(Exception::class)
-    open fun getManufacturer(pageSize: Int, page: Int): ApiResponse {
+    open fun getManufacturer(pageSize: Int, page: Int): TwoParam<List<Manufacturer>, Int> {
         val apiResponse= mCarRemoteService.getManufacturer(WA_KEY, pageSize, page).execute()
 
         if (!apiResponse.isSuccessful) {
             throw RuntimeException("getManufacturer API is not successful, HTTP-Code: ${apiResponse.code()}")
         }
 
-        val bodyResponse = apiResponse.body()
+        val bodyResponse = apiResponse.body()!!
 
-        return bodyResponse!!
+        return TwoParam(mCarMapper.convertToManufacturers(bodyResponse), bodyResponse.pageSize * bodyResponse.totalPageCount)
     }
 
     @Throws(Exception::class)

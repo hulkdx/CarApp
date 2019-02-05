@@ -51,6 +51,11 @@ abstract class BaseMainFragment: Fragment(), MainContract.View {
         loadData()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        getMainPresenter().detach()
+    }
+
     //---------------------------------------------------------------
     // Setup Views
     //---------------------------------------------------------------

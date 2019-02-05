@@ -31,7 +31,7 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         setupDrawer(savedInstanceState == null)
 
-        activityComponent!!.inject(this)
+        activityComponent?.inject(this)
     }
 
     override fun onBackPressed() {
@@ -101,10 +101,10 @@ class MainActivity : BaseActivity() {
                 fragment = ManufacturersFragment()
             }
             FragmentActionType.CarType -> {
-                fragment = CarTypeFragment.newInstance(ids!![0])
+                fragment = CarTypeFragment.newInstance(ids?.get(0))
             }
             FragmentActionType.CarBuiltDate -> {
-                fragment = CarBuiltDateFragment.newInstance(manufactureId = ids!![0], carType = ids[1])
+                fragment = CarBuiltDateFragment.newInstance(manufactureId = ids?.get(0), carType = ids?.get(0))
             }
         }
         if (isFirstTimeLoaded) addFragment(R.id.fragment_content, fragment)
